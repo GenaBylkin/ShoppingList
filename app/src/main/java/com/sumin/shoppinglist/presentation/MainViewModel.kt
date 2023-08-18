@@ -25,7 +25,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         viewModelScope.launch {
             deleteShopItemUseCase.deleteShopItem(shopItem)
         }
-
     }
 
     fun changeEnableState(shopItem: ShopItem) {
@@ -33,6 +32,5 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             val newItem = shopItem.copy(enabled = !shopItem.enabled)
             editShopItemUseCase.editShopItem(newItem)
         }
-
     }
 }
