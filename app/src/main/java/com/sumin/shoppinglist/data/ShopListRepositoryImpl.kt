@@ -17,28 +17,21 @@ class ShopListRepositoryImpl(
     //private val shopListLD = MutableLiveData<List<ShopItem>>()
    // private val shopList = sortedSetOf<ShopItem>({ o1, o2 -> o1.id.compareTo(o2.id) })
 
-    private var autoIncrementId = 0
+    //private var autoIncrementId = 0
 
-    init {
-        for (i in 0 until 10) {
-            val item = ShopItem("Name $i", i, Random.nextBoolean())
-            addShopItem(item)
-        }
-    }
-
-    override fun addShopItem(shopItem: ShopItem) {
+    override suspend fun addShopItem(shopItem: ShopItem) {
         shopListDao.addShopItem(mapper.mapShopListToShopListDb(shopItem))
     }
 
-    override fun deleteShopItem(shopItem: ShopItem) {
+    override suspend fun deleteShopItem(shopItem: ShopItem) {
         shopListDao.deleteShopItem(shopItem.id)
     }
 
-    override fun editShopItem(shopItem: ShopItem) {
+    override suspend fun editShopItem(shopItem: ShopItem) {
         shopListDao.addShopItem(mapper.mapShopListToShopListDb(shopItem))
     }
 
-    override fun getShopItem(shopItemId: Int): ShopItem {
+    override suspend fun getShopItem(shopItemId: Int): ShopItem {
         val db = shopListDao.getShopItem(shopItemId)
         return mapper.mapShopListDbToShopList(db)
     }

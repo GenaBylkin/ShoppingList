@@ -6,7 +6,7 @@ import com.sumin.shoppinglist.domain.ShopItem
 @Entity(tableName = "shop_item")
 data class ShopItemDbModel(
     @PrimaryKey(autoGenerate = true)
-    var id: Int,
+    var id: Int ,
     val name: String,
     val count: Int,
     val enabled: Boolean,
